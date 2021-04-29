@@ -95,5 +95,37 @@ const database = {
     //         technologyId: 1,
     //         wheelId: 1,
     //     }
-    // ]
+    // ],
+    orderBuilder: [{}]
+}
+
+
+export const getColors = () => {
+    return [...database.colors]
+}
+export const getInteriors = () => {
+    return [...database.interiors]
+}
+export const getTechnologies = () => {
+    return [...database.technologies]
+}
+export const getWheels = () => {
+    return [...database.wheels]
+}
+export const getOrders = () => {
+    return [...database.customOrders]
+}
+
+
+export const setColors = (id) => {
+    database.orderBuilder.colorId = id
+}
+export const setInteriors = (id) => {
+    database.orderBuilder.interiorId = id
+}
+export const setTechnologies = (id) => {
+    database.orderBuilder.technologyId = id
+}
+export const setWheels = (id) => {
+    database.orderBuilder.wheelId = id
 }
