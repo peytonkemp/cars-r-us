@@ -1,7 +1,7 @@
-import { Colors } from "./colors"
-import { Interiors } from "./interiors"
-import { Technologies } from "./technologies"
-import { Wheels } from "./wheels"
+import { Colors } from "./colors.js"
+import { Interiors } from "./interiors.js"
+import { Technologies } from "./technologies.js"
+import { Wheels } from "./wheels.js"
 
 
 export const CarsRUs = () => {
@@ -31,9 +31,9 @@ export const CarsRUs = () => {
             <button id="orderButton">Create Custom Order</button>
         </article>
 
-        <article class="customOrders">
-            <h2>Custom Jewelry Orders</h2>
-            ${Orders()}
-        </article>
-    `
+        `
 }
+        // <article class="customOrders">
+        //     <h2>Custom Jewelry Orders</h2>
+        //     ${Orders()}
+        // </article>
