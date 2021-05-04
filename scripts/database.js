@@ -87,16 +87,16 @@ const database = {
             price: 50.00,
         },
     ],
-    // customOrders: [
-    //     {
-    //         id: 1,
-    //         colorId: 1,
-    //         interiorId: 1,
-    //         technologyId: 1,
-    //         wheelId: 1,
-    //     }
-    // ],
-    orderBuilder: [{}]
+    customOrders: [
+        {
+            id: 1,
+            colorId: 1,
+            interiorId: 1,
+            technologyId: 1,
+            wheelId: 1,
+        }
+    ],
+    orderBuilder: {}
 }
 
 
@@ -117,15 +117,15 @@ export const getOrders = () => {
 }
 
 
-export const setColors = (id) => {
+export const setColor = (id) => {
     database.orderBuilder.colorId = id
 }
-export const setInteriors = (id) => {
+export const setInterior = (id) => {
     database.orderBuilder.interiorId = id
 }
-export const setTechnologies = (id) => {
+export const setTechnology = (id) => {
     database.orderBuilder.technologyId = id
 }
-export const setWheels = (id) => {
+export const setWheel = (id) => {
     database.orderBuilder.wheelId = id
 }
