@@ -3,6 +3,23 @@ import { getWheels, setWheel } from "./database.js"
 const wheels = getWheels()
 
 document.addEventListener(
+    "click",
+    (event) => {
+        const itemClicked = event.target.id
+
+        if (itemClicked.startsWith("wheel")) {
+            const [, wheelId] = itemClicked.split("--")
+
+            for (const wheel of wheels) {
+                if (wheel.id === parseInt(wheelId)) {
+                    window.alert(`You selected ${wheel.type}.`)
+                }
+            }
+        }
+    }
+)
+
+document.addEventListener(
     "change",
     (event) => {
         if (event.target.name === "wheel") {
@@ -18,7 +35,7 @@ export const Wheels = () => {
     const listItems = wheels.map(w => {
         return `
         <li>
-            <input type="radio" name="wheel" value="${w.id}" /> ${w.type}
+            <input type="radio" name="wheel" id="wheel--${w.id}" /> ${w.type}
         </li>
         `
     })

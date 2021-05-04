@@ -3,6 +3,23 @@ import { getColors, setColor } from "./database.js"
 const colors = getColors()
 
 document.addEventListener(
+    "click",
+    (event) => {
+        const itemClicked = event.target.id
+
+        if (itemClicked.startsWith("color")) {
+            const [, colorId] = itemClicked.split("--")
+
+            for (const color of colors) {
+                if (color.id === parseInt(colorId)) {
+                    window.alert(`You selected ${color.color}.`)
+                }
+            }    
+        }
+    }
+)
+
+document.addEventListener(
     "change",
     (event) => {
         if (event.target.name === "color") {
@@ -18,7 +35,7 @@ export const Colors = () => {
     const listItems = colors.map(c => {
         return `
         <li>
-            <input type="radio" name="color" value="${c.id}" /> ${c.color}
+            <input type="radio" name="color" id="color--${c.id}" /> ${c.color}
         </li>
         `
     })
