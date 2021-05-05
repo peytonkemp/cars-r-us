@@ -12,7 +12,6 @@ document.addEventListener(
 
             for (const wheel of wheels) {
                 if (wheel.id === parseInt(wheelId)) {
-                    window.alert(`You selected ${wheel.type}.`)
                 }
             }
         }

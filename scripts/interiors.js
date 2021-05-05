@@ -11,7 +11,6 @@ document.addEventListener(
 
             for (const interiorObj of interiors) {
                 if (interiorObj.id === parseInt(interiorId)) {
-                    window.alert(`You selected ${interiorObj.type}.`)
                 }
             }
         }

@@ -12,7 +12,6 @@ document.addEventListener(
 
             for (const technology of technologies) {
                 if (technology.id === parseInt(technologyId)) {
-                    window.alert(`You selected ${technology.package}.`)
                 }
             }
         }
