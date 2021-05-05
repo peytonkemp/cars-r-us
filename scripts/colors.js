@@ -12,7 +12,6 @@ document.addEventListener(
 
             for (const color of colors) {
                 if (color.id === parseInt(colorId)) {
-                    window.alert(`You selected ${color.color}.`)
                 }
             }    
         }
