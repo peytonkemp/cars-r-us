@@ -1,6 +1,9 @@
-import { getOrders } from "./database.js"
+import { getColors, getInteriors, getOrders, getTechnologies, getWheels } from "./database.js"
 
-
+const colors = getColors()
+const interiors = getInteriors()
+const technologies = getTechnologies()
+const wheels = getWheels()
 
 const buildOrderListItem = (order) => {
     return `<li>
@@ -24,4 +27,3 @@ export const Orders = () => {
 
     return html
 }
-
