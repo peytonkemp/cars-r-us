@@ -32,12 +32,13 @@ export const Colors = () => {
 
     // Use .map() for converting objects to <li> elements
     const listItems = colors.map(c => {
-        return `
-        <li>
-            <input type="radio" name="color" id="color--${c.id}" /> ${c.color}
-        </li>
-        `
-    })
+        return `<li class="choice-list-item color--list-item">
+            <input type="radio" value="color--${c.id}" name="color">
+                ${c.color}
+                <div class="price">Price: $${c.price.toFixed(2)}</div>
+            </li>`
+    }
+)
 
     html += listItems.join("")
     html += "</ul>"

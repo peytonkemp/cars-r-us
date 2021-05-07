@@ -31,12 +31,13 @@ export const Interiors = () => {
 
     // Use .map() for converting objects to <li> elements
     const listItems = interiors.map(taco => {
-        return `
-        <li>
-            <input type="radio" name="interior" id="interior--${taco.id}" /> ${taco.type}
-        </li>
-        `
-    })
+        return `<li class="choice-list-item interior--list-item">
+            <input type="radio" value="interior--${taco.id}" name="interior">
+                ${taco.type}
+                <div class="price">Price: $${taco.price.toFixed(2)}</div>
+            </li>`
+    }
+)
 
     html += listItems.join("")
     html += "</ul>"

@@ -32,12 +32,13 @@ export const Technologies = () => {
 
     // Use .map() for converting objects to <li> elements
     const listItems = technologies.map(t => {
-        return `
-        <li>
-            <input type="radio" name="technology" id="technology--${t.id}" /> ${t.package}
-        </li>
-        `
-    })
+        return `<li class="choice-list-item technology--list-item">
+            <input type="radio" value="technology--${t.id}" name="technology">
+                ${t.package}
+                <div class="price">Price: $${t.price.toFixed(2)}</div>
+            </li>`
+    }
+    )
 
     html += listItems.join("")
     html += "</ul>"
