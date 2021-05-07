@@ -132,21 +132,56 @@ export const setWheel = (id) => {
 }
 
 export const addCustomOrder = () => {
-    // Copy the current state of user choices
-    const newOrder = { ...database.orderBuilder }
+    // Check to see if the orderBuilder object has all the necessary properties
+    if (
+        "colorId" in database.orderBuilder &&
+        "interiorId" in database.orderBuilder &&
+        "technologyId" in database.orderBuilder &&
+        "wheelId" in database.orderBuilder
+    ) {
+        // creating a copy of the orderBuilder object and storing that object in the newOrder variable
+        const newOrder = {
+            colorId: database.orderBuilder.colorId,
+            interiorId: database.orderBuilder.interiorId,
+            technologyId: database.orderBuilder.technologyId,
+            wheelId: database.orderBuilder.wheelId
+        }
 
-    // Add a new primary key to the object
-    newOrder.id = [...database.customOrders].pop().id + 1
+        //* Use ternary statement to conditionally set the value of newOrder.id...
+        // Are there any existing order objects in the orders array?
+        newOrder.id = database.customOrders.length > 0
+            // Yes? (length of orders array is greater than 0)
+            // ---- Get the value of id of the the last order object from orders array.
+            // ---- Set the newOrder.id equal to that value + one
+            ? [...database.customOrders].pop().id + 1
+            // No? (length of orders array is 0)
+            // ---- Set newOrder.id equal to 1
+            : 1
 
-    // Add a timestamp to the order
-    newOrder.timestamp = Date.now()
+        //* This is the if..else way of writing the conditional logic above
+        // if(database.orders.length > 0){
+        //     newOrder.id = [...database.orders].pop().id + 1
+        // } else {
+        //     newOrder.id = 1
+        // }
 
-    // Add the new order object to custom orders state
-    database.customOrders.push(newOrder)
+        // assigning the value of the newOrder.timestamp property to the current timestamp
+        newOrder.timestamp = Date.now()
 
-    // Reset the temporary state for user choices
-    database.orderBuilder = {}
+        // push the newOrder object into the orders array
+        database.customOrders.push(newOrder)
 
-    // Broadcast a notification that permanent state has changed
-    document.dispatchEvent(new CustomEvent("stateChanged"))
+        // set the value of orderBuilder to an empty object
+        database.orderBuilder = {}
+
+        // announce to the rest of the application that the state of our orders array has changed
+        document.dispatchEvent(new CustomEvent("stateChanged"))
+
+        console.log(database.customOrders)
+        // returning true when all properties exists
+        return true
+    }
+    // returning false when there are missing properties ( user must complete selection )
+    return false
+
 }
